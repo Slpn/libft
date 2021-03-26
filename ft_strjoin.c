@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 15:04:32 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 15:04:34 by snarain          ###   ########.fr       */
+/*   Created: 2021/03/26 15:02:36 by snarain           #+#    #+#             */
+/*   Updated: 2021/03/26 15:37:14 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
-	void	*memo;
+	char	*str;
+	int		len;
+	int		i;
+	int		j;
 
-	len = nmemb * size;
-	memo = malloc(len);
-	if (memo == NULL)
+	i = 0;
+	j = 0;
+	len = 0;
+	while (s1[i] && s2[j])
+	{
+		i++;
+		j++;
+	}
+	len = i + j;
+	str = malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
 		return (NULL);
-	ft_bzero(memo, len);
-	return (memo);
+	str[len] = '\0';
+	while (j-- > 0)
+		str[--len] = s2[j];
+	while (i-- > 0)
+		str[--len] = s1[i];
+	return (str);
 }
