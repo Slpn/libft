@@ -6,13 +6,11 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:47:34 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 22:51:53 by snarain          ###   ########.fr       */
+/*   Updated: 2021/03/27 01:12:54 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int	sizeword(char *str, char c)
 {
@@ -44,7 +42,6 @@ int	countword(char *str, char c)
 				++word;
 			state = 0;
 		}
-		printf("%d\n",word);
 		++str;
 	}
 	return (word);
@@ -60,7 +57,7 @@ char	**ft_split(char *s, char c)
 	words = countword(s,c);
 	ret = (char **)malloc(sizeof(char *) * words + 1);
 	index = -1;
-	while (++index < words)
+	while (*s && ++index < words)
 	{
 		while (*s && *s == c)
 			++s;
@@ -72,19 +69,4 @@ char	**ft_split(char *s, char c)
 	}
 	ret[index] = 0;
 	return (ret);
-}
-
-int    main(void)
-{
-	char **splitted;
-	int i;
-    
-	i = 0;
-	splitted = ft_split("Helloabcmyabcfriend", 'a');
-	while (splitted[i])
-	{
-		printf("%s\n", splitted[i]);
-		i++;
-	}
-	return(0);
 }
