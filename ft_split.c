@@ -6,7 +6,7 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:47:34 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/28 00:08:57 by snarain          ###   ########.fr       */
+/*   Updated: 2021/03/30 00:22:36 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,28 @@ int	countword(char const *str, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int		index;
 	int		i;
-	int		words;
-	char	**ret;
+	int		j;
+	int		wordslen;
+	char	**tab;
 
-	words = countword(s, c);
-	ret = (char **)malloc(sizeof(char *) * words + 1);
-	index = -1;
-	while (*s && ++index < words)
+	wordslen = countword(s, c);
+	tab = (char **)malloc(sizeof(char *) * wordslen + 1);
+	if (!tab)
+		return (NULL);
+	i = -1;
+	while (*s && ++i < wordslen)
 	{
 		while (*s && *s == c)
 			++s;
-		ret[index] = (char *)malloc(sizeof(char) * sizeword(s, c) + 1);
-		i = 0;
+		tab[i] = (char *)malloc(sizeof(char) * sizeword(s, c) + 1);
+		if (!tab[i])
+			return (NULL);
+		j = 0;
 		while (*s && *s != c)
-			ret[index][i++] = *s++;
-		ret[index][i] = 0;
+			tab[i][j++] = *s++;
+		tab[i][j] = 0;
 	}
-	ret[index] = 0;
-	return (ret);
+	tab[wordslen] = 0;
+	return (tab);
 }
