@@ -6,13 +6,13 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:47:34 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/27 01:12:54 by snarain          ###   ########.fr       */
+/*   Updated: 2021/03/28 00:08:57 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	sizeword(char *str, char c)
+int	sizeword(char const *str, char c)
 {
 	int	size;
 
@@ -25,7 +25,7 @@ int	sizeword(char *str, char c)
 	return (size);
 }
 
-int	countword(char *str, char c)
+int	countword(char const *str, char c)
 {
 	int	word;
 	int	state;
@@ -38,7 +38,7 @@ int	countword(char *str, char c)
 			state = 1;
 		else
 		{
-			if (state = 1)
+			if (state == 1)
 				++word;
 			state = 0;
 		}
@@ -47,21 +47,21 @@ int	countword(char *str, char c)
 	return (word);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		index;
 	int		i;
 	int		words;
 	char	**ret;
 
-	words = countword(s,c);
+	words = countword(s, c);
 	ret = (char **)malloc(sizeof(char *) * words + 1);
 	index = -1;
 	while (*s && ++index < words)
 	{
 		while (*s && *s == c)
 			++s;
-		ret[index] = (char *)malloc(sizeof(char) * sizeword(s,c) + 1);
+		ret[index] = (char *)malloc(sizeof(char) * sizeword(s, c) + 1);
 		i = 0;
 		while (*s && *s != c)
 			ret[index][i++] = *s++;

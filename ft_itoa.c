@@ -6,57 +6,51 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:05:22 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 15:05:24 by snarain          ###   ########.fr       */
+/*   Updated: 2021/03/28 18:30:56 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_intl(int n)
+size_t	ft_intlen(int nb)
 {
-	long	i;
+	int	len;
 
-	i = 0;
-	if (n < 0)
+	len = 0;
+	if (nb <= 0)
+		len++;
+	while (nb)
 	{
-		n = n * (-1);
-		i++;
+		len++;
+		nb = nb / 10;
 	}
-	if (n == 0)
-		return (++i);
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	long	i;
 	int		len;
+	char	*str;
+	long	nb;
 
-	i = n;
-	len = ft_intl(n);
-	str = malloc (sizeof(char) * len + 1);
-	if (str == NULL)
+	len = ft_intlen(n);
+	nb = n;
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (NULL);
-	str[len--] = '\0';
-	if (i == -2147483648)
-		return ("-2147483648");
-	if (i == 0)
-		str[0] = '0';
-	if (i < 0)
+	if (nb < 0)
 	{
 		str[0] = '-';
-		i *= -1;
+		nb = -nb;
 	}
-	while (i > 0)
+	if (nb == 0)
+		str[0] = '0';
+	str[len--] = '\0';
+	while (nb)
 	{
-		str[len--] = i % 10 + '0';
-		i /= 10;
+		str[len] = nb % 10 + '0';
+		len--;
+		nb = nb / 10;
 	}
 	return (str);
 }

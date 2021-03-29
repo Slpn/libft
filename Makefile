@@ -6,7 +6,7 @@
 #    By: snarain <snarain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 15:03:04 by snarain           #+#    #+#              #
-#    Updated: 2021/03/27 19:43:07 by snarain          ###   ########.fr        #
+#    Updated: 2021/03/28 18:50:57 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS = 	ft_atoi.c \
 		ft_memcpy.c \
 		ft_memmove.c \
 		ft_memset.c \
+		ft_split.c \
 		ft_strchr.c \
 		ft_strdup.c \
 		ft_strjoin.c \
@@ -42,6 +43,7 @@ SRCS = 	ft_atoi.c \
 		ft_strncmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
+		ft_putchar_fd.c \
 		ft_tolower.c \
 		ft_toupper.c \
 
