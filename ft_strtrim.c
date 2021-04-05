@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/28 18:43:05 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/30 00:15:45 by snarain          ###   ########.fr       */
+/*   Created: 2021/04/01 01:06:25 by snarain           #+#    #+#             */
+/*   Updated: 2021/04/05 15:47:02 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	write(fd, &c, 1);
+	char	*str;
+	size_t	len;
+
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	len = ft_strlen(s1);
+	while (len && ft_strchr(set, s1[len]))
+		len--;
+	str = ft_substr((char *)s1, 0, len + 1);
+	return (str);
 }

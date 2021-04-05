@@ -6,7 +6,7 @@
 #    By: snarain <snarain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 15:03:04 by snarain           #+#    #+#              #
-#    Updated: 2021/03/28 18:50:57 by snarain          ###   ########.fr        #
+#    Updated: 2021/04/05 15:23:45 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ SRCS = 	ft_atoi.c \
 		ft_strncmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
+		ft_strtrim.c \
+		ft_substr.c \
 		ft_putchar_fd.c \
 		ft_tolower.c \
 		ft_toupper.c \

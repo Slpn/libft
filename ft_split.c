@@ -5,65 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 15:47:34 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/30 00:22:36 by snarain          ###   ########.fr       */
+/*   Created: 2021/03/30 00:24:05 by snarain           #+#    #+#             */
+/*   Updated: 2021/03/30 00:54:16 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	sizeword(char const *str, char c)
+int	sizeword(char const *s, char c)
 {
 	int	size;
 
 	size = 0;
-	while (*str && *str != c)
+	while (*s && *s != c)
 	{
-		str++;
 		size++;
+		s++;
 	}
 	return (size);
 }
 
-int	countword(char const *str, char c)
+int		count_word(char	const *s, char c)
 {
-	int	word;
 	int	state;
+	int	word;
 
 	word = 0;
 	state = 1;
-	while (*str)
+	while (*s)
 	{
-		if (*str == c)
+		if (*s == c)
 			state = 1;
-		else
+		else 
 		{
 			if (state == 1)
-				++word;
+				word++;
 			state = 0;
 		}
-		++str;
+		s++;
 	}
 	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	char	**tab;
 	int		i;
 	int		j;
-	int		wordslen;
-	char	**tab;
+	int		words;
 
-	wordslen = countword(s, c);
-	tab = (char **)malloc(sizeof(char *) * wordslen + 1);
+	words = count_word(s,c);
+	tab = malloc(sizeof(char *) * words + 1);
 	if (!tab)
 		return (NULL);
 	i = -1;
-	while (*s && ++i < wordslen)
+	while (*s && ++i < words)
 	{
 		while (*s && *s == c)
-			++s;
-		tab[i] = (char *)malloc(sizeof(char) * sizeword(s, c) + 1);
+			s++;
+		tab[i] = malloc(sizeof(char) * sizeword(s,c) + 1);
 		if (!tab[i])
 			return (NULL);
 		j = 0;
@@ -71,6 +71,6 @@ char	**ft_split(char const *s, char c)
 			tab[i][j++] = *s++;
 		tab[i][j] = 0;
 	}
-	tab[wordslen] = 0;
+	tab[words] = 0;
 	return (tab);
 }
