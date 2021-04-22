@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/30 22:47:48 by snarain           #+#    #+#             */
-/*   Updated: 2021/04/05 22:36:56 by snarain          ###   ########.fr       */
+/*   Created: 2021/04/22 15:27:58 by snarain           #+#    #+#             */
+/*   Updated: 2021/04/22 16:00:32 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*str;
+	int	i;
 
-	if (!s || ft_strlen(s) <= start || !len)
-		return (ft_strdup(""));
-	(str = malloc(++len));
-	if (str == NULL)
-		return (NULL);
-	ft_strlcpy(str, s + start, len);
-	return (str);
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
