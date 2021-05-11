@@ -6,7 +6,7 @@
 #    By: snarain <snarain@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 15:03:04 by snarain           #+#    #+#              #
-#    Updated: 2021/04/22 16:02:04 by snarain          ###   ########.fr        #
+#    Updated: 2021/05/11 21:59:38 by snarain          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = 	ft_atoi.c \
 		ft_strlcat.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
+		ft_strmapi.c \
 		ft_strncmp.c \
 		ft_strnstr.c \
 		ft_strrchr.c \
@@ -52,7 +53,18 @@ SRCS = 	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 
+BONUS =	ft_lstnew.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_front.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
+		ft_lstclear.c \
+
 SRCS_O	= ${SRCS:.c=.o}
+BONUS_O		= ${BONUS:.c=.o}
 all: $(NAME)
 
 LIBC	= ar -rcs
@@ -63,11 +75,13 @@ LIBC	= ar -rcs
 $(NAME): ${SRCS_O}
 		${LIBC} $(NAME) $(SRCS_O)
 
+bonus: $(SRCS_O) $(BONUS_O)
+		$(LIBC) $(NAME) $(SRCS_O) $(BONUS_O)
 
 fclean: clean
 		$(DEL) $(NAME) 
 
 clean:
-		$(DEL) $(SRCS_O)
-		    
+		$(DEL) $(SRCS_O) $(BONUS_O)
+
 re: fclean all
