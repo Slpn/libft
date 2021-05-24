@@ -6,7 +6,7 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 00:24:05 by snarain           #+#    #+#             */
-/*   Updated: 2021/04/05 22:56:01 by snarain          ###   ########.fr       */
+/*   Updated: 2021/05/21 18:25:36 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	count_word(char	const *s, char c)
 
 	word = 0;
 	state = 1;
+	if (!s)
+		return (0);
 	while (*s)
 	{
 		if (*s == c)
@@ -56,7 +58,7 @@ char	**ft_split(char const *s, char c)
 
 	words = count_word(s, c);
 	tab = malloc(sizeof(char *) * words + 1);
-	if (!tab)
+	if (!tab || !s)
 		return (NULL);
 	i = -1;
 	while (*s && ++i < words)

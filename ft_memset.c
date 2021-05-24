@@ -6,7 +6,7 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:06:23 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 15:06:24 by snarain          ###   ########.fr       */
+/*   Updated: 2021/05/21 17:44:29 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t		a;
 
-	if (!b)
+	if (!b && !c)
 		return (NULL);
 	a = 0;
 	while (a < len)

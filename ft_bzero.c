@@ -6,7 +6,7 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:04:24 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 15:04:26 by snarain          ###   ########.fr       */
+/*   Updated: 2021/05/21 17:47:47 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t		i;
+	size_t	i;
 
-	if (!s)
-		return ;
 	i = 0;
 	while (i < n)
 	{
-		*(char *)(s + i) = 0;
+		*(char *)s = 0;
+		s++;
 		i++;
 	}
 }

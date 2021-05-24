@@ -6,24 +6,26 @@
 /*   By: snarain <snarain@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 15:05:31 by snarain           #+#    #+#             */
-/*   Updated: 2021/03/26 15:05:32 by snarain          ###   ########.fr       */
+/*   Updated: 2021/05/21 18:49:05 by snarain          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t	i;
+	unsigned int	i;
+	unsigned char	*src_cpy;
+	unsigned char	*dst_cpy;
 
-	if (!dest || !src)
-		return (NULL);
+	src_cpy = (unsigned char *)src;
+	dst_cpy = (unsigned char *)dst;
 	i = 0;
 	while (i < n)
 	{
-		*(char *)(dest + i) = *(char *)(src + i);
-		if (*(char *)(src + i) == (char)c)
-			return (dest + i + 1);
+		dst_cpy[i] = src_cpy[i];
+		if (dst_cpy[i] == (unsigned char)c)
+			return (dst_cpy + i + 1);
 		i++;
 	}
 	return (NULL);
